@@ -18,13 +18,13 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s-%(message)s')
 class Spider():
     def __init__(self,max_job=5,storedir='Science/'):
         self.headers    = {'User-Agent':'Mozilla/5.0 (compatible; MSTE 5.5; Windows NT)', 'Connection':'close'}
-        self.podprefix  = 'Science-'                     #音频前缀
-        self.showstr    = 'downloading from Science... ' #下载进度显示字符
+        self.downloaded = 0                                           #下载数
+        self.podprefix  = 'Science-'                                  #音频前缀
+        self.showstr    = 'downloading from Science... '              #下载进度显示字符
+        self.pt_bs_url  = "https://www.sciencemag.org"                #podcast_base_url
         self.pg_bs_url  = "https://www.sciencemag.org/podcasts?page=" #page_base_url
-        self.pt_bs_url  = "https://www.sciencemag.org"   #podcast_base_url
-        self.downloaded = 0
-        self.max_job    = max_job                        #分布式下载进程最大数量
-        self.storedir   = storedir                       #设定存储位置名称
+        self.max_job    = max_job                                     #下载进程最大数量
+        self.storedir   = storedir                                    #设定存储位置名称
         self.max_page   = self._get_max_page()
         self.page_urls  = self._get_page_urls() 
 
