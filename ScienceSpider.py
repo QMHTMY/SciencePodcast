@@ -116,6 +116,7 @@ class Spider():
                         stream.write(ck)
 
 
+
     #*********************4.分布式下载器**************************************
     def _download_multi(self,urls):
         '''分布式爬虫'''
@@ -133,8 +134,11 @@ class Spider():
         info_dic = self._get_podcast_info(url)
         radio_info = info_dic['radio']
         pdf_info   = info_dic['pdf']
-        self._download_file(radio_info[0],radio_info[1])
+
+        self._download_file(radio_info[0],radio_info[1]) #core function
         self._download_file(pdf_info[0],pdf_info[1])
+
+        self.downloaded += 1
 
 
     #*********************5.提取页面播客链接**********************************
@@ -167,7 +171,6 @@ class Spider():
         for page_url in self.page_urls:
             podcast_urls = self._get_podcast_urls(page_url)
             self._download_multi(podcast_urls)
-            self.downloaded += len(podcast_urls)
             time.sleep(5)
 
 if __name__ == "__main__":
