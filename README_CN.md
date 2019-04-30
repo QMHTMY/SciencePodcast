@@ -10,5 +10,5 @@
 
 	注意: 需要python3，且要安装了latex，和pandoc
 
-# 结果 #
+# 科学播客 #
 [![E1jv5j.md.png](https://s2.ax1x.com/2019/04/29/E1jv5j.md.png)](https://imgchr.com/i/E1jv5j)
