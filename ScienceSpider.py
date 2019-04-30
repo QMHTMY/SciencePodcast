@@ -22,6 +22,7 @@ class Spider():
         self.showstr    = 'downloading from Science... ' #下载进度显示字符
         self.pg_bs_url  = "https://www.sciencemag.org/podcasts?page=" #page_base_url
         self.pt_bs_url  = "https://www.sciencemag.org"   #podcast_base_url
+        self.downloaded = 0
         self.max_job    = max_job                        #分布式下载进程最大数量
         self.storedir   = storedir                       #设定存储位置名称
         self.max_page   = self._get_max_page()
@@ -166,6 +167,7 @@ class Spider():
         for page_url in self.page_urls:
             podcast_urls = self._get_podcast_urls(page_url)
             self._download_multi(podcast_urls)
+            self.downloaded += len(podcast_urls)
             time.sleep(5)
 
 if __name__ == "__main__":
@@ -180,4 +182,4 @@ if __name__ == "__main__":
     finally:
         end = time.time() 
         last = (end - start)/60
-        print("Time consumed:%.2f minute(s)"%(last))
+        print("Downloaded %d podcast(s) in %.2f minute(s)"%(spider.downloaded,last))
