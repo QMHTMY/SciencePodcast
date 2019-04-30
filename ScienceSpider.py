@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s-%(message)s')
 class Spider():
     def __init__(self,max_job=5,storedir='Science/'):
         self.headers    = {'User-Agent':'Mozilla/5.0 (compatible; MSTE 5.5; Windows NT)', 'Connection':'close'}
-        self.podprefix  = 'Science-'                     #音频前缀名
+        self.podprefix  = 'Science-'                     #音频前缀
         self.showstr    = 'downloading from Science... ' #下载进度显示字符
         self.pg_bs_url  = "https://www.sciencemag.org/podcasts?page=" #page_base_url
         self.pt_bs_url  = "https://www.sciencemag.org"   #podcast_base_url
@@ -39,7 +39,7 @@ class Spider():
         if soup:
             last_patn = 'pager-last ellipsis last'  #硬编码，不好
             rest = soup.find('li',class_=last_patn) 
-            max_page = int(rest.getText()[:2])
+            max_page = int(rest.getText()[:2])      #最大页符号中类似28>>，
         return max_page 
 
     def _get_page_urls(self):
