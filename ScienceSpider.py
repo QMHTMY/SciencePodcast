@@ -143,7 +143,7 @@ class Spider():
         self._download_file(radio_info[0],radio_info[1]) #core function
         self._download_file(pdf_info[0],pdf_info[1])
 
-        self.downloaded += 1
+        #self.downloaded += 1
 
 
     #*********************5.提取页面播客链接**********************************
@@ -162,7 +162,7 @@ class Spider():
 
 
     #*********************6.下载启动器****************************************
-    def _get_url_content(url):
+    def _get_url_content(self,url):
         '''网页下载函数'''
         html_res = get(url,headers=self.headers)
         if 200 == html_res.status_code:
@@ -175,7 +175,8 @@ class Spider():
     def control(self):
         for page_url in self.page_urls:
             podcast_urls = self._get_podcast_urls(page_url)
-            self._download_multi(podcast_urls)
+            self._download_multi(podcast_urls[:4])
+            return None 
             time.sleep(5)
 
 if __name__ == "__main__":
@@ -190,4 +191,4 @@ if __name__ == "__main__":
     finally:
         end = time.time() 
         last = (end - start)/60
-        print("Downloaded %d podcast(s) in %.2f minute(s)"%(spider.downloaded,last))
+        print("Downloaded in %.2f minute(s)"%(last))
