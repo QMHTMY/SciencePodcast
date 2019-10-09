@@ -1,3 +1,9 @@
+-----------------
+# Compatible OS #
+-----------------
+	Mac OS
+	Unix-like OS
+
 -------------
 # Description #
 -------------
