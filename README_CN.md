@@ -10,7 +10,7 @@
 # 使用 #
 	$ python NatureSpider.py
 
-	注意: 需要python3，且要安装了latex，和pandoc
+注意:需要python3，且要[安装Latex](https://blog.csdn.net/Shieber/article/details/88751683)，和pandoc
 
 # 科学播客 #
 [![E8EEEn.md.png](https://s2.ax1x.com/2019/04/30/E8EEEn.md.png)](https://imgchr.com/i/E8EEEn)
