@@ -37,7 +37,9 @@ logging.basicConfig(level=logging.DEBUG,format='%(asctime)s-%(message)s')
 
 class Spider():
     def __init__(self,max_job=5,storedir='Science/'):
-        self.headers    = {'User-Agent':'Mozilla/5.0 (compatible; MSTE 5.5; Windows NT)', 'Connection':'close'}
+        self.headers    = {
+                            'User-Agent':'Mozilla/5.0 (compatible; MSTE 5.5; Windows NT)',
+                            'Connection':'close'}
         self.downloaded = 0                                           #下载数
         self.podprefix  = 'Science-'                                  #音频前缀
         self.showstr    = 'downloading from Science... '              #下载进度显示字符
@@ -120,7 +122,7 @@ class Spider():
 
     #*********************3.播客和pdf文件下载器*******************************
     def _download_file(self,url,fl_name):
-        if (url == None) or path.exists(fl_name):
+        if (not url) or path.exists(fl_name):
             return None
 
         s = requests.session()
