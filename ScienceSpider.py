@@ -25,6 +25,7 @@ import os
 import sys
 import time
 import logging
+import requests 
 import os.path as path
 from bs4 import BeautifulSoup as Soup
 from tqdm import tqdm
@@ -122,7 +123,9 @@ class Spider():
         if (url == None) or path.exists(fl_name):
             return None
 
-        with closing(get(url,stream=True,headers=self.headers,timeout=5)) as res:
+        s = requests.session()
+        s.keep_alive = False
+        with closing(s.get(url,stream=True,headers=self.headers,timeout=5)) as res:
             if 200 == res.status_code:
                 size = 1024*10
 
@@ -172,7 +175,9 @@ class Spider():
     #*********************6.下载启动器****************************************
     def _get_url_content(self,url):
         '''网页下载函数'''
-        html_res = get(url,headers=self.headers)
+        s = requests.session()
+        s.keep_alive = False
+        html_res = s.get(url,headers=self.headers)
         if 200 == html_res.status_code:
             html_res.encoding='utf-8'
             soup = Soup(html_res.text,'html.parser') 
@@ -188,7 +193,8 @@ class Spider():
 if __name__ == "__main__":
     logging.disable(logging.CRITICAL)                  #调试开关
     start = time.time()
-
+    requests.adapters.DEFAULT_RETRIES = 5
+ 
     spider = Spider()
     try:
         spider.control()
