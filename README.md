@@ -1,6 +1,6 @@
 ### Compatible OS 
-- Mac OS
 - Linux
+- Mac OS
 
 ### Description 
 

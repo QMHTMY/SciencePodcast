@@ -1,6 +1,6 @@
 ### 兼容系统 
+- Linux 
 - Mac OS
-- Unix-like OS
 
 ### 描述 
 [[English](./README.md)] 从[科学](https://www.sciencemag.org/)网站下载所有播客音频和对应的文本(PDF格式)，所有的文件会存储在Science/文件夹中。
