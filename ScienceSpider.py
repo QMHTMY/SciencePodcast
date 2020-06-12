@@ -204,5 +204,4 @@ if __name__ == "__main__":
         print(err)
     finally:
         end = time.time() 
-        last = (end - start)/60
-        print("Downloaded in %.2f minute(s)"%(last))
+        print(f"Downloaded in {(end - start)/60:.2f} minute(s)")
